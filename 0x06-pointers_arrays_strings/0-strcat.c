@@ -1,26 +1,22 @@
-#include "holberton.h"
+#include "main.h"
+#include <stdio.h>
+
 /**
- *  _strcat - concatenates 2 strings.
- *  @dest: string with concatenation
- *  @src: string to be concatenated
+ *  main - check the code
+ *  
  *  Return: Always 0.
  */
-char *_strcat(char *dest, char *src)
+int main(void)
 {
-		int lengthD, lengthS;
+	char s1[98] = "Hello ";
+	char s2[] = "World!\n";
+	char *ptr;
 
-		lengthD = 0;
-		lengthS = 0;
-
-		while (*(dest + lengthD) != '\0')
-			lengthD++;
-
-		while (*(src + lengthS) != '\0' && lengthD < 97)
-		{
-			*(dest + lengthD) = *(src + lengthS);
-			lengthD++;
-			lengthS++;
-		}
-		*(dest + lengthD) = '\0';
-		return (dest);
+	 printf("%s\n", s1);
+	 printf("%s", s2);
+	 ptr = _strcat(s1, s2);
+	 printf("%s", s1);
+	 printf("%s", s2);
+         printf("%s", ptr);
+	 return (0);
 }
