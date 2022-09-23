@@ -1,5 +1,4 @@
-#include "holberton.h"
-#include <stdio.h>
+#include "main.h"
 /**
  *  @n1: string1.
  *  @n2: string2.
