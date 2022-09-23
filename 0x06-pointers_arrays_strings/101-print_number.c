@@ -1,9 +1,9 @@
 #include "main.h"
 
 /**
- * print_number - print an int numbers.
- * @n: number tested
- * Return: Always 0
+ * print_number - function to print int using _putchar
+ *
+ * @num: int to print
  */
 void print_number(int num)
 {
@@ -40,4 +40,3 @@ void print_number(int num)
 		_putchar('0' + n % 10);
 	}
 }
-	
