@@ -6,31 +6,29 @@
  *
  * Return: String with all words capitalized.
  */
-char *cap_string(char *s)
+char *cap_string(char *c)
 {
-	int i, j;
-		int a[] = {32, 9, 10, 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
+	int i = 0, j,
+	    sep[] = {32, '\t', 11,  '\n', 44, 59, 46, 33, 63, 34, 40, 41, 123, 125};
 
-		i = 0;
-			while (*(s + i) != '\0')
+	if (c[0] > 96 && c[0] < 123)
+		c[0] -= 32;
+	while (c[i] != '\0')
+	{
+		if (c[i] > 96 && c[i] < 123)
+		{
+			j = 0;
+			while (j < 14)
 			{
-				if (*(s + i) >= 'a' && *(s + i) <= 'z')
+				if (c[i - 1] == sep[j])
 				{
-					{
-						if (i == 0)
-						{
-							*(s + i) = *(s + i) - 32;
-						}
-						else
-						{
-							for (j = 0; j <= 12; j++)
-							{
-								*(s + i) = *(s + i) - 32;
-							}
-						}
-					}
+					c[i] -= 32;
+					break;
 				}
-				i++;
+				j++;
 			}
-			return (s);
+		}
+		i++;
+	}
+	return (c);
 }
