@@ -29,28 +29,28 @@ size_t looped_listint_len(const listint_t *head)
 		if (slowP == fastP)
 		{
 			slowP = head;
-						while (slowP != fastP)
-										{
-															nodes++;
-																			slowP = slowP->next;
-																							fastP = fastP->next;
-																										}
-
-									slowP = slowP->next;
-												while (slowP != fastP)
-																{
-																					nodes++;
-																									slowP = slowP->next;
-																												}
-
-															return (nodes);
-																	}
-
+			while (slowP != fastP)
+			{
+				nodes++;
 				slowP = slowP->next;
-						fastP = (fastP->next)->next;
-							}
+				fastP = fastP->next;
+			}
 
-		return (0);
+			slowP = slowP->next;
+			while (slowP != fastP)
+			{
+				nodes++;
+				slowP = slowP->next;
+			}
+
+			return (nodes);
+		}
+
+		slowP = slowP->next;
+		fastP = (fastP->next)->next;
+	}
+
+	return (0);
 }
 
 
@@ -64,27 +64,27 @@ size_t print_listint_safe(const listint_t *head)
 {
 	size_t nodes, index = 0;
 
-		nodes = looped_listint_len(head);
+	nodes = looped_listint_len(head);
 
-			if (nodes == 0)
-					{
-								for (; head != NULL; nodes++)
-											{
-															printf("[%p] %d\n", (void *)head, head->n);
-																		head = head->next;
-																				}
-									}
+	if (nodes == 0)
+	{
+		for (; head != NULL; nodes++)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+		}
+	}
 
-				else
-						{
-									for (index = 0; index < nodes; index++)
-												{
-																printf("[%p] %d\n", (void *)head, head->n);
-																			head = head->next;
-																					}
+	else
+	{
+		for (index = 0; index < nodes; index++)
+		{
+			printf("[%p] %d\n", (void *)head, head->n);
+			head = head->next;
+		}
 
-											printf("-> [%p] %d\n", (void *)head, head->n);
-												}
+		printf("-> [%p] %d\n", (void *)head, head->n);
+	}
 
-					return (nodes);
+	return (nodes);
 }
