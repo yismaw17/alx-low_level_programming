@@ -64,35 +64,35 @@ size_t looped_listint_count(listint_t *head)
  * Description: The function sets the head to NULL.
  */
 size_t free_listint_safe(listint_t **h)
+{
+	listint_t *tmp;
+	size_t nodes, index;
+
+	nodes = looped_listint_count(*h);
+
+	if (nodes == 0)
+	{
+		for (; h != NULL && *h != NULL; nodes++)
 		{
-			listint_t *tmp;
-			size_t nodes, index;
+			tmp = (*h)->next;
+			free(*h);
+			*h = tmp;
+		}
+	}
 
-			nodes = looped_listint_count(*h);
+	else
+	{
+		for (index = 0; index < nodes; index++)
+		{
+			tmp = (*h)->next;
+			free(*h);
+			*h = tmp;
+		}
 
-			if (nodes == 0)
-			{
-				for (; h != NULL && *h != NULL; nodes++)
-				{
-					tmp = (*h)->next;
-					free(*h);
-					*h = tmp;
-				}
-			}
+		*h = NULL;
+	}
 
-			else
-			{
-				for (index = 0; index < nodes; index++)
-				{
-					tmp = (*h)->next;
-					free(*h);
-					*h = tmp;
-				}
+	h = NULL;
 
-				*h = NULL;
-			}
-
-			h = NULL;
-
-			return (nodes);
-		}			
+	return (nodes);
+}
